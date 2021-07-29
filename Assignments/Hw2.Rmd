@@ -1,0 +1,55 @@
+---
+title: "Assignment 2: Mathematics of Linear Models"
+author: "5440 | Spring 2021 | Uni: chb2132"
+date: "February 04, 2021"
+output: 
+  pdf_document: 
+    toc: no
+    fig_caption: yes
+    number_sections: yes
+    keep_tex: yes
+    highlight: kate
+    latex_engine: xelatex
+---
+
+-----
+*Students will be asked to demonstrate their mastery of the analytical machinery covered in lecture by proving*
+*some of the mathematical lemmas used in lecture. In a supplemental python exercise, students will be guided*
+*through how to code up a regression runner that uses the SVD and the pseudo-inverse.*
+-----
+
+### **Problem 1 (5 points): Show that $rank(X) = rank(X′X)$ for any matrix X with real entries.**
+
+  For any square and invertible matrices, the inverse and the transpose operator are commutable: $(X^T)' = (X')^T$. 
+  And since $(X^T)^T = X$, we know $(X^T X)'$ is symmetric, given that: $[(X^T X)']^T = [(X^T X)^T]' = (X^T X)'$.
+
+  Application of the aforementioned rules make clear the symmetric property of $H$, which we derive as: 
+  $H^T = [X(X^T X)'X^T]^T = X[(X^T X)']^T X^T = H$, demonstrates to us the following symmetrical properties:
+
+  With Identity Matrix, $I$: $(I-H)^T = I^T - H^T = (I-H)$, where $H$ is the matrix of the orthogonal projection of matrix $X$.
+  *Note: if a matrix is both an orthogonal projection and an orthogonal matrix, we see that it is the Identity Matrix.*
+
+  If we set our OLS estimator such that it is given by the $(p^∗ × 1)$ vector:
+
+  For any square matrix $A$ of order $k \times k$, where $B$ is a matrix of rank $k$ with dimensions $n \times k$, 
+  we can implement basic matrix operations on matrix ranks, like so: $rank(BA) = rank(A)$ & $rank(AB)^T = rank(A)$, 
+  where we have made the assumption that: $rank(X) = p^*$. 
+  
+  It then follows that we can derive: $rank(H) = rank(X^T X)' X^T) = rank((X^T X)') = rank(X^T X) = p^*$
+  *Note: we can see that invertible matrices require full rank, meaning inversion is a rank-preserving function.*
+
+  From this, we can conclude that our column space of $H$ is equivalent to the column space of $X$, such that 
+  $col(H) = col(X)$, wherein the column space of $X$ consists of the set of all vectors that can be obtained as a 
+  linear combination of the column of $X$ (also known as the 'span' of the columns of $X$). 
+
+  $\therefore$, we can see that for any matrix X with real entries, $rank(X) = rank(X′X)$, *Q.E.D.*
+
+### **Problem 2 (5 points).** 
+
+* Write a python function "pinv" to compute the Moore-Penrose pseudoinverse of a numpy matrix, using the singular value decomposition. 
+
+* Write a function which uses the pinv function to compute the fitted coefficients and fitted (in-sample) residuals of a standard linear model.
+
+*Note: your linear regression function should work, even if the matrix X′X has no (standard) inverse.*
+  
+*Note: completed in Google Colab as an iPython notebook, please see following submission page for function code*
