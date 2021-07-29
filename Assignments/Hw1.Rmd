@@ -1,0 +1,54 @@
+---
+title: "Assignment 1: Conjugate Priors and Parameters"
+author: "chb2132"
+date: "04/02/2021"
+output: 
+  pdf_document: 
+    toc: yes
+    fig_caption: yes
+    number_sections: yes
+    keep_tex: yes
+    highlight: kate
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+===
+## Students will practice the introductory Bayesian statistics learned in class by working out conjugate priors for simple Markov chains and multivariate Gaussians. Students will also get their feet wet in python by programming a simple hyper-parameter updating scheme.
+===
+
+---
+### Problem 1 (2 points). 
+
+Show that if $$X_i \sim \mathrm{Poisson}(\lambda_i))$$ for $$i = 1, \ldots, n$$ are independent Poisson-distributed random variables, then their sum, $$\sum_{i=1}^n X_i$$ is also Poisson, with parameter $$\sum_{i=1}^n \lambda_i$$
+
+
+
+
+
+---
+### Problem 2 (3 points). 
+
+Let $$x_1, \ldots, x_n$$ be a stationary Markov chain with two states, denoted 0 and 1, with matrix of transition probabilities uniquely specified by $$p_{00} = p_{11} = \theta$$ for parameter $$0 < \theta < 1$$. Suppose $$p(x_1 = 0) = p(x_1 = 1) = 1/2$$. 
+
+Let $$X = (x_1, \ldots, x_n)$$ and show that $$p(X\, \mid\, \theta)$$ is a one-parameter exponential family. 
+
+* Identify the sufficient statistic T in terms of state transition counts. 
+
+* Compute the moment generating function of T and use it to compute the first two moments of T. 
+
+* Write down the natural conjugate prior and the hyper-parameter update equations.
+
+
+---
+### Problem 3 (5 points). 
+
+  **(a)** What is the natural conjugate prior $$\pi^*(\mu, \Sigma)$$ associated to the multi-variate Gaussian likelihood $$N(\mu, \Sigma)$$, where $$\mu$$ is a p-dimensional vector, and $$\Sigma$$ is a $$p \times p$$ covariance matrix? 
+  
+   *Note: here, 'natural' means the conjugate prior obtained from the general procedure for exponential families discussed in class.*
+   
+    
+    
+  **(b)** Write a python class which represents a conjugate prior density of the form used in part (a). The member variables of your class should be the hyper-parameters $$\nu, \eta$$. Provide methods on your class for computing hyper-parameter updates.
